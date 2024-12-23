@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Register Now</title>
+
+</head>
+
+
+<body>
+    <!-- Navbar -->
+    <header>
+        <div class="logo-container">
+            <h1>HydraBloom</h1>
+            <!-- Leaf Logo -->
+            <img src="{{ url_for('static', filename='images/image.jpg') }}" alt="Leaf Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                <li><a href="{{ url_for('about') }}">About Us</a></li>
+            </ul>
+        </nav>
+    </header>
+    <!-- Register Section -->
+    <div class="register-container">
+        <h1>Register Now!</h1>
+        <form>
+            <input type="text" placeholder="Enter your name" required>
+            <input type="email" placeholder="Enter your email" required>
+            <input type="password" placeholder="Enter your password" required>
+            <div class="checkbox-container">
+                <input type="checkbox" required>
+                <label>I agree to the <a href="#">terms & policy</a></label>
+            </div>
+            <button type="submit" class="signup-btn">Signup</button>
+        </form>
+        <div class="separator">or</div>
+        <a href="/login">
+            <button type="button" class="login-with-google-btn">
+                Sign in with Google
+            </button>
+        </a>
+        <p class="footer-text">Have an account? <a href="{{ url_for('signin') }}">Sign In</a></p>
+    </div>
+
+
+    <!-- <a href="/login">
+        <button type="button" class="login-with-google-btn">
+            Sign in with Google
+        </button>
+    </a> -->
+    <!-- </body> -->
+
+</html>

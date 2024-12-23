@@ -1,0 +1,150 @@
+/* style.css */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    background-color: white;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    font-size: 24px;
+    color: #333;
+    margin: 0;
+}
+
+header nav {
+    display: flex;
+    align-items: center;
+}
+
+header nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+header nav ul li {
+    margin: 0 15px;
+}
+
+header nav ul li a {
+    text-decoration: none;
+    color: #5a5a5a;
+    font-weight: bold;
+}
+
+header nav ul li a:hover {
+    color: #6200ea;
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background-color: #333;
+    margin: 4px 0;
+}
+
+.mobile-menu {
+    display: none;
+    flex-direction: column;
+    list-style: none;
+    padding: 0;
+    background-color: white;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+}
+
+.mobile-menu li {
+    margin: 10px 0;
+}
+
+.main-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px;
+    background-color: white;
+}
+
+.text-content {
+    max-width: 50%;
+}
+
+.text-content h1 {
+    font-size: 36px;
+    color: #333;
+}
+
+.text-content p {
+    font-size: 16px;
+    color: #666;
+    line-height: 1.5;
+    margin: 20px 0;
+}
+
+.login-with-google-btn {
+    background-color: #4285f4;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+.login-with-google-btn:hover {
+    background-color: #3367d6;
+}
+
+.image-section {
+    max-width: 40%;
+    text-align: center;
+}
+
+.image-section img {
+    max-width: 100%;
+    height: auto;
+}
+
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+
+    .desktop-menu {
+        display: none;
+    }
+
+    .mobile-menu {
+        display: flex;
+    }
+
+    .main-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .text-content, .image-section {
+        max-width: 100%;
+        text-align: center;
+    }
+}

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Login</title>
+</head>
+
+<body>
+    <header>
+        <div class="logo-container">
+            <h1>HydraBloom</h1>
+            <!-- Leaf Logo -->
+            <img src="{{ url_for('static', filename='images/image.jpg') }}" alt="Leaf Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                <li><a href="{{ url_for('about') }}">About Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- <div class="container">
+        <h2>Sign in</h2>
+        <from>
+            <form action="{{ url_for('login') }}" method="POST">
+            <input type="text" name="email" placeholder="Email" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <input type="submit" value="Login">
+            </form>
+            <div class="separator">or</div>
+            <a href="/login">
+                <button type="button" class="login-with-google-btn">
+                    Sign in with Google
+                </button>
+            </a>
+
+
+            {% if error %}
+            <div class="error">{{ error }}</div>
+            {% endif %}
+    </div> -->
+
+    <div class="register-container">
+        <h1>Sign In</h1>
+        <form>
+            <input type="text" name="email" placeholder="Email" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <!-- <input type="submit" value="Login"> -->
+            <button type="submit" class="signup-btn">Sign In</button>
+        </form>
+        <div class="separator">or</div>
+        <a href="/login">
+            <button type="button" class="login-with-google-btn">
+                Sign in with Google
+            </button>
+        </a>
+        <p class="footer-text">Do not Have an account? <a href="{{ url_for('register') }}">Register</a></p>
+    </div>
+</body>
+
+</html>

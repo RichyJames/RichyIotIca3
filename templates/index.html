@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Inventory Management</title>
+    <script src="static/js/main.js"></script>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <h1>Inventory Management</h1>
+        </div>
+        <nav>
+            <ul class="desktop-menu">
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                <li><a href="{{ url_for('about') }}">About Us</a></li>
+            </ul>
+            <div class="hamburger" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="mobile-menu" id="mobile-menu">
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                <li><a href="{{ url_for('about') }}">About Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="text-content">
+            <h1>Inventory Management</h1>
+            <p>Welcome to the ultimate solution for managing your home inventory effortlessly! Our software streamlines and organizes everything you own, making your life simpler and more organized.</p>
+            <a href="/login">
+                <button type="button" class="login-with-google-btn">
+                    Sign in with Google
+                </button>
+            </a>
+        </div>
+
+        <div class="image-section">
+            <img src="{{ url_for('static', filename='images/landing_page_image.png') }}" alt="Inventory Illustration">
+        </div>
+    </div>
+</body>
+
+</html>
