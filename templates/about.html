@@ -1,34 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <title>HydraBloom About</title>
+    <title>Inventory Management</title>
 </head>
-
 <body>
 
-    <!-- Header -->
     <header>
         <div class="logo-container">
-            <h1>HydraBloom</h1>
-            <!-- Leaf Logo -->
-            <img src="{{ url_for('static', filename='images/image.jpg') }}" alt="Leaf Logo">
+            <h1>Inventory Management</h1>
         </div>
         <nav>
-            <ul>
+            <ul class="desktop-menu">
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                <li><a href="{{ url_for('about') }}">About Us</a></li>
+            </ul>
+            <div class="hamburger" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="mobile-menu" id="mobile-menu">
                 <li><a href="{{ url_for('index') }}">Home</a></li>
                 <li><a href="{{ url_for('about') }}">About Us</a></li>
             </ul>
         </nav>
     </header>
 
+
     <!-- About Section -->
     <section class="about-section">
-        <h2>About Hydrabloom</h2>
-        <p>The only vase your plant will ever need</p>
+        <h2>About Smart Inventory</h2>
+        <p>Welcome to the ultimate solution for managing your home inventory effortlessly! Our software streamlines and organizes everything you own, making your life simpler and more organized.</p>
     </section>
 
     <!-- Mission Section -->
@@ -36,21 +41,14 @@
         <div class="mission-text">
             <h3>Our Mission</h3>
             <p>
-                Our mission is to revolutionize plant care with innovative solutions that make it effortless to nurture
-                nature.
-                We believe that everyone deserves the joy of thriving plants without the stress of constant upkeep.
-                That’s why we’ve created a vase that automatically waters your plants,
-                ensuring they receive the perfect amount of hydration when they need it most. Our goal is to bring
-                harmony between technology and nature.
+                Our mission is to revolutionize inventory management with innovative solutions that make it effortless to organize and manage your belongings. We believe that everyone deserves the joy of a clutter-free and organized life without the stress of manual tracking. That’s why we’ve created a system that automatically updates and tracks your inventory, ensuring you always know what you have and where it is. Our goal is to bring harmony between technology and daily life.
             </p>
         </div>
-        <div class="plant-image">
-            <img src="{{ url_for('static', filename='images/PlantPotted.png') }}" alt="Asplenium Houseplant">
-            <!-- <img src="images/PlantPotted.png" alt="Asplenium Houseplant"> -->
-            <p>Asplenium Houseplant</p>
+        <div class="image-container">
+            <img src="static/images/aboutus.jpg" alt="Inventory Illustration">
+            <p>Efficient Inventory Management</p>
         </div>
     </section>
 
 </body>
-
 </html>
