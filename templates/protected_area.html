@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protected Area</title>
+    <script src="https://cdn.pubnub.com/sdk/javascript/pubnub.7.2.0.min.js"></script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7fc;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px 30px;
+            text-align: center;
+            font-size: 24px;
+            border-bottom: 2px solid #3e8e41;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .sensor-data {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-top: 30px;
+        }
+        .sensor-data h3 {
+            color: #4CAF50;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        .sensor-data p {
+            font-size: 16px;
+            line-height: 1.5;
+            margin: 8px 0;
+        }
+        .sensor-data p strong {
+            font-weight: bold;
+            color: #333;
+        }
+        footer {
+            text-align: center;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        Welcome, {{ user.name }}
+    </header>
+
+    <div class="container">
+        <h2>Sensor Data</h2>
+        <div id="sensor-data" class="Inventory">
+            <h3>Current Data:</h3>
+            <p><strong>Distance:</strong> {{ sensor_data.distance }} cm</p>
+            <p><strong>LED Status:</strong> {{ sensor_data.led_status }}</p>
+            <p><strong>Timestamp:</strong> {{ sensor_data.timestamp | todatetime }}</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Protected Area. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const pubnub = new PubNub({
+            publishKey: "{{ config['PUBNUB_PUBLISH_KEY'] }}",
+            subscribeKey: "{{ config['PUBNUB_SUBSCRIBE_KEY'] }}",
+            uuid: "{{ session['google_id'] }}", // Unique identifier for the user
+        });
+
+        pubnub.subscribe({
+            channels: ['sensor-channel'], // Ensure this matches the channel you are publishing to
+        });
+
+        // Handle incoming messages
+        pubnub.addListener({
+            message: function(event) {
+                const data = event.message;
+
+                // Update the webpage with the received data
+                const sensorDataDiv = document.getElementById('sensor-data');
+                sensorDataDiv.innerHTML = `
+                    <h3>Current Data:</h3>
+                    <p><strong>Distance:</strong> ${data.distance} cm</p>
+                    <p><strong>LED Status:</strong> ${data.led_status}</p>
+                    <p><strong>Timestamp:</strong> ${new Date(data.timestamp).toLocaleString()}</p>
+                `;
+            },
+        });
+
+        console.log("Listening for messages on 'sensor-channel'...");
+    </script>
+</body>
+</html>
+
